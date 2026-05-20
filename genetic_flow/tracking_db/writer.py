@@ -15,6 +15,11 @@ def store_mutation(chash, gen, score, code, task, ast_depth=0, stagnation=0, lat
     git_hash = get_git_hash()
     
     conn = sqlite3.connect(DB_PATH)
+    # Step 1801: High-Speed PRAGMA optimizations (Pseudo-DuckDB performance)
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
+    conn.execute("PRAGMA cache_size=-64000") # 64MB cache
+    
     cursor = conn.cursor()
     # Updated Schema for Future Symbolic Bot ingestion
     cursor.execute("""
