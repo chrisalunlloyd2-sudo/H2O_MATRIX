@@ -1,0 +1,6 @@
+{
+  "read-only-files": [
+    "genetic_flow/core_brain/test_harness.py",
+    "genetic_flow/tracking_db/"
+  ]
+}
