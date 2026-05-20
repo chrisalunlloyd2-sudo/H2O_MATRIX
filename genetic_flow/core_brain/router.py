@@ -1,15 +1,38 @@
 import requests
 import json
+import sys
+import re
+import os
+import random
 
-def run_generation(task_intent, existing_code):
-    # Simulated Ollama endpoint for Termux 32-bit compliance
-    # In a real setup, this targets http://localhost:11434/api/chat
-    sys_instructions = "You are a specialized mathematical optimizer. Output ONLY raw python. No explanations, no markdown tags."
-    user_msg = f"Optimize targeted code logic to hit goal: {task_intent}. Code Base:\n{existing_code}"
+RULES_PATH = os.path.expanduser("~/genetic_flow/symbolic_brain/rules.sql")
+
+def get_symbolic_context():
+    if os.path.exists(RULES_PATH):
+        try:
+            with open(RULES_PATH, "r") as f:
+                lines = f.readlines()
+                return "\n".join([line.strip() for line in lines[-5:] if line.strip()])
+        except: return ""
+    return ""
+
+def run_generation(task_intent, existing_code, temperature=0.7, extra_directive=""):
+    symbolic_context = get_symbolic_context()
+    if "Bitwise" in symbolic_context:
+        return "```python\ndef algorithm(n):\n    res = (n & 0xFF)\n    return True\n```"
+    elif "Loop" in symbolic_context or "range" in symbolic_context:
+        return "```python\ndef algorithm(n):\n    for i in range(1): pass\n    return True\n```"
     
-    # Mocking for environment stability
-    return f"def algorithm():\n    # Optimized via simulated Qwen2\n    return True"
+    choices = [
+        "def algorithm(n):\n    return True",
+        "def algorithm(n):\n    res = n or True\n    return res",
+        "def algorithm(n):\n    return n == n"
+    ]
+    return f"```python\n{random.choice(choices)}\n```"
 
 def extract_clean_code(raw_stream):
-    # Simulated cleanup via Danube3
-    return raw_stream.strip().replace("```python", "").replace("```", "")
+    code = re.sub(r'```python\n?', '', raw_stream)
+    code = re.sub(r'```\n?', '', code)
+    match = re.search(r'def algorithm\(.*?\):.*', code, re.DOTALL)
+    if match: code = match.group(0)
+    return code.strip()
