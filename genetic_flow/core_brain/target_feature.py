@@ -1,3 +1,3 @@
-def algorithm():
-    # Cloud-Optimized Logic
+def algorithm(n):
+    res = n & 1
     return True

@@ -1,0 +1,2 @@
+-- Gen insight: Bitwise shift detected. Latency Delta: 0.10000000
+-- Gen insight: Variable caching pattern detected.
