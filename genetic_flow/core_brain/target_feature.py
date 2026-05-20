@@ -1,3 +1,3 @@
-def algorithm(n):
-    for i in range(1): pass
+def algorithm():
+    # Cloud-Optimized Logic
     return True
