@@ -1,3 +1,3 @@
 def algorithm(n):
-    res = n & 1
+    res = (n & 0xFF)
     return True
