@@ -1,92 +1,97 @@
-import hashlib
 import os
 import sys
 import time
-import subprocess
+import hashlib
 from dotenv import load_dotenv
 
-# Add path for local modules
+# Add local modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-# Load configuration
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 from genetic_flow.core_brain import router as r
 from genetic_flow.core_brain import test_harness as qa
-from genetic_flow.core_brain import watchdog as wb
+from genetic_flow.symbolic_brain import engine as sym
 from genetic_flow.core_brain import tui_layout as view
 from genetic_flow.tracking_db import writer as w
-from genetic_flow.symbolic_brain import extractor as sym
+from genetic_flow.core_brain.binary_engine.decompiler import BinaryDecompilationEngine
 from rich.live import Live
 
-def git_commit(message):
-    try:
-        # Surgical add to avoid noise
-        subprocess.run(["git", "add", "genetic_flow/core_brain/target_feature.py"], check=True, capture_output=True)
-        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True)
-        return True
-    except: return False
+import argparse
 
-def git_rollback():
-    try:
-        # Rollback ONLY the target file, never the infrastructure
-        subprocess.run(["git", "checkout", "HEAD", "--", "genetic_flow/core_brain/target_feature.py"], check=True, capture_output=True)
-        return True
-    except: return False
-
-def main_loop():
-    goal = "Ensure algorithm(n) returns True or n for any integer n with max speed."
-    current_passing_code = "def algorithm(n):\n    return False"
-    current_passing_median = 999.0
+def main_loop(max_gen=1000):
+    goal = "Optimize algorithm(n) for max throughput."
+    current_code = "def algorithm(n):\n    return n > 0"
+    current_median = 999.0
     
-    stagnation_monitor = wb.Watchdog(max_rounds=5)
-    symbolic_bot = sym.SymbolicExtractor()
+    # Initialize Engines
+    context_engine = sym.SymbolicContextEngine()
+    rule_matcher = sym.ProductionRuleMatcher()
+    backpropagator = sym.WeightBackpropagator()
+    injector = sym.MutationInjector()
+    router = r.LocalAgentRouter()
+    decompiler = BinaryDecompilationEngine()
+    
+    # Track binary entropy
+    current_entropy = decompiler.decompile_and_score(current_code)
     target_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "core_brain/target_feature.py"))
-    
-    with Live(view.generate_dashboard(0, 0.0, current_passing_code, 0, 5), refresh_per_second=4) as live:
-        for generation in range(1, 1000000):
-            # 1. Symbolic Extraction (Every 5 generations for testing)
-            if generation % 5 == 0:
-                symbolic_bot.analyze_patterns()
 
-            # 2. Get Hyperparameter Adjustments
-            h_params = stagnation_monitor.get_hyperparameter_adjustment()
+    with Live(view.generate_dashboard(0, 0, current_code, 0, 5), refresh_per_second=4) as live:
+        for gen in range(1, max_gen + 1):
+            # 1. TOKENIZE
+            signature = context_engine.get_structural_signature(current_code)
+            c_hash = context_engine.generate_context_hash(signature)
             
-            # 3. Generation & Extraction
-            raw_output = r.run_generation(goal, current_passing_code, extra_directive=str(h_params))
-            cleaned_code = r.extract_clean_code(raw_output)
+            # 2. MATCH
+            rule_id, directive, weight = rule_matcher.match_rule(c_hash) or (1, "global", 1.0)
             
-            # 4. Physical Asset Code Stamp
+            # 3. GENERATE
+            raw_gen = router.run_generation(goal, current_code, extra_directive=directive)
+            mutated_code = r.extract_clean_code(raw_gen)
+            
+            # 4. INJECT
+            final_code = injector.apply_mutation(mutated_code, directive)
             with open(target_path, "w") as f:
-                f.write(cleaned_code)
+                f.write(final_code)
             
-            # 5. Evaluation
-            fitness, ast_depth, median_lat = qa.evaluate()
-            chash = hashlib.md5(cleaned_code.encode()).hexdigest()
+            # 5. EVALUATE + BINARY MATH
+            start_eval = time.time()
+            fitness, median_lat, variance = qa.evaluate()
+            eval_duration = time.time() - start_eval
             
-            # 6. Selection Pressure & Atomic Sync
-            improvement = current_passing_median - median_lat
+            new_entropy = decompiler.decompile_and_score(final_code)
             
-            # Only accept improvement
-            if median_lat > 0 and median_lat < current_passing_median:
-                current_passing_code = cleaned_code
-                current_passing_median = median_lat
-                git_commit(f"Gen {generation}: Mutation {chash} | Latency: {median_lat:.6f}")
-                w.store_mutation(chash, generation, fitness, cleaned_code, goal, ast_depth, stagnation_monitor.stuck_rounds, improvement)
-                stagnation_monitor.check_stagnation(1.0)
+            # 6. SELECTION PRESSURE (Latency + Entropy)
+            success = (median_lat < current_median) or (new_entropy < current_entropy)
+            
+            # 7. BACKPROPAGATE
+            backpropagator.backprop(rule_id, success)
+            
+            if success:
+                current_code = final_code
+                current_median = median_lat
+                current_entropy = new_entropy
+                
+                context_engine.update_relational_matrix(current_code)
+                w.store_mutation(c_hash, gen, fitness, current_code, goal)
             else:
-                git_rollback()
-                tripped, rounds = stagnation_monitor.check_stagnation(0)
-                if tripped:
-                    live.update(view.generate_dashboard(generation, fitness, "TRIGGERING CLOUD ESCALATION...", rounds, 5))
-                    cloud_code = stagnation_monitor.trigger_cloud_escalation()
-                    current_passing_code = cloud_code
-                    with open(target_path, "w") as f: f.write(cloud_code)
-                    git_commit(f"Gen {generation}: Cloud Escalation")
-                    time.sleep(2)
+                with open(target_path, "w") as f:
+                    f.write(current_code)
 
-            live.update(view.generate_dashboard(generation, fitness, current_passing_code, stagnation_monitor.stuck_rounds, 5))
-            time.sleep(0.5)
+            # --- RESOURCE CONSTRAINTS (25% CPU CAP + 5S DELAY) ---
+            cooldown = eval_duration * 3
+            time.sleep(cooldown + 5.0) 
+            
+            # --- SCIENTIFIC LOGGING ---
+            with open("SCIENTIFIC_LOG.md", "a") as log:
+                log.write(f"\n### Generation {gen} (Step 9 Equivalent)\n")
+                log.write(f"- **Observation**: Latency={median_lat:.2f}ms, Entropy={new_entropy:.4f}\n")
+                log.write(f"- **Hypothesis**: Mutation with directive '{directive}' improves fitness.\n")
+                log.write(f"- **Result**: {'SUCCESS' if success else 'FAILURE'} (Score: {fitness})\n")
+
+            live.update(view.generate_dashboard(gen, fitness, current_code, 0, 5))
 
 if __name__ == "__main__":
-    main_loop()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max-gen", type=int, default=1000)
+    args = parser.parse_args()
+    main_loop(max_gen=args.max_gen)

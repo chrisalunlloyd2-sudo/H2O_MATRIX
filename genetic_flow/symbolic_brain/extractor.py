@@ -42,9 +42,16 @@ class SymbolicExtractor:
         # Deduplicate and persist
         unique_rules = list(set(rules))
         if unique_rules:
-            with open(RULES_PATH, "w") as f: # Overwrite with current best insights
-                f.write("\n".join(unique_rules) + "\n")
-            return f"Synchronized {len(unique_rules)} symbolic axioms."
+            # Step 1801: Merge with existing rules (preserve cluster biases)
+            existing_rules = []
+            if os.path.exists(RULES_PATH):
+                with open(RULES_PATH, "r") as f:
+                    existing_rules = [line.strip() for line in f.readlines()]
+            
+            combined = list(set(existing_rules + unique_rules))
+            with open(RULES_PATH, "w") as f:
+                f.write("\n".join(combined) + "\n")
+            return f"Synchronized {len(combined)} symbolic axioms."
         return "Awaiting structural breakthroughs."
 
 if __name__ == "__main__":
