@@ -27,3 +27,11 @@ To prevent battery swelling and CPU frequency pinning during agentic loops:
 ## 🧬 Sprite Success Learning
 *   **Success Only:** The Sprite learns ONLY from code that achieves > 0.95 fitness.
 *   **Pattern Storage:** Common successful patterns are stored as binary BLOBs in the `SUCCESS_VAULT`.
+
+## 🛡️ ENTERPRISE PROJECT SOP (v1.0)
+[MANDATE: ABSOLUTE PRECEDENCE]
+Every project manifestation MUST begin with the `ENTERPRISE_INIT.p` protocol:
+1. **Agentic Sync:** Load Memory Daemon, Inference Engine, and GitHub OAuth (~/.gemini/oauth_creds.json).
+2. **GH Manifestation:** Auto-create repo and sync via `initialize_enterprise_project.py`.
+3. **High-Fidelity Docs:** Maintain `README.md` (with ASCII Tree & Performatives), `Blueprint.md`, `CHANGELOG.md`, and `PROJECT_LOG.md`.
+4. **Step-by-Step Backup:** Perform force-sync to GitHub on every logical milestone to prevent state loss.
