@@ -1,20 +1,22 @@
-# 🌌 MATRIX GEN8: ARCHITECTURAL BLUEPRINT
+# 🌌 H2O MATRIX: UNIFIED ARCHITECTURAL BLUEPRINT
 [timedat: 2026-05-23]
 
-## 🏗️ SYSTEM ARCHITECTURE
-The system operates as a neural-symbolic developmental substrate for 32-bit Android environments.
+## 🏗️ INTEGRATED ECOSYSTEM
+The H2O Matrix is the final consolidation of the H2O IDE and the Matrix GEN8 substrate, designed for 32-bit Android manifestation.
 
-### 1. ORCHESTRATION LAYER
-- **Anti-Gravity CLI (Go):** The primary low-latency interface.
-- **Genetic Flow Runtime:** The iterative mutation engine.
+### 1. ORCHESTRATION & CLI (H2O Layer)
+- **Anti-Gravity Go CLI:** The primary low-latency entry point.
+- **H2O Daemons:** Monitoring `agy_master.log` for autonomous task execution.
+- **Network Hook:** Flask-based gateway for external agentic triggers.
 
-### 2. MEMORY & STATE
-- **SQLite WAL Foundation:** High-speed random access state tracking.
-- **Agentic Memory Daemon:** Asynchronous logging and state handoffs.
+### 2. EVOLUTIONARY ENGINE (Matrix Layer)
+- **Genetic Flow Runtime:** The recursive mutation and state restoration engine.
+- **Scientific Executor:** Logic-driven code validation substrate.
 
-### 3. INFERENCE BACKEND
-- **Llama.cpp (32-bit):** Native memory-mapped inference engine.
-- **Danube 500M Model:** Optimized for resource-constrained environments.
+### 3. SHARED INFRASTRUCTURE
+- **Inference:** Unified llama-server on port 8080 (Danube-500M).
+- **Memory:** Shared SQLite WAL foundation (`memory_foundation.db`).
+- **SOP:** Centralized Enterprise Project Protocol (`ENTERPRISE_INIT.p`).
 
 ## 🌊 DATA FLOW
-Intent -> LOGOS Filtering -> Neural Routing -> Symbolic Execution -> Validation -> GitHub Sync.
+Intent -> LOGOS -> Neural Routing -> Darwinian Mutation -> Granular Testing -> GitHub Manifestation.

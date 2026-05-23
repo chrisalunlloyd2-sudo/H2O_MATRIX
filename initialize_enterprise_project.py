@@ -38,10 +38,14 @@ def generate_ascii_tree(path="."):
     return "\n".join(output)
 
 def initialize():
-    # Use workspace directory name as project name
-    project_root = "/data/data/com.termux/files/home"
-    os.chdir(project_root)
-    project_name = "MATRIX_GEN8_HOME" # Specific name for the home backup
+    # Use current directory name as project name
+    project_root = os.getcwd()
+    project_name = os.path.basename(project_root)
+    
+    # Specific override for root home if needed
+    if project_name == "home" or project_name == "":
+         project_name = "MATRIX_GEN8_HOME"
+
     token = get_token()
     
     if not token:
@@ -52,7 +56,7 @@ def initialize():
 
     # 1. Create Github Repo (via API)
     headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"}
-    payload = {"name": project_name, "private": True}
+    payload = {"name": project_name, "private": False}
     
     resp = requests.post("https://api.github.com/user/repos", headers=headers, json=payload)
     if resp.status_code == 201:
