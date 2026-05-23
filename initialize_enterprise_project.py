@@ -5,10 +5,20 @@ import time
 from datetime import datetime
 import requests
 
-# Path to OAuth creds
+# Paths to creds
 CREDS_PATH = os.path.expanduser("~/.gemini/oauth_creds.json")
+GH_TOKEN_PATH = os.path.expanduser("~/.gemini/github_token.txt")
 
 def get_token():
+    # Prioritize dedicated GitHub PAT
+    if os.path.exists(GH_TOKEN_PATH):
+        try:
+            with open(GH_TOKEN_PATH, 'r') as f:
+                return f.read().strip()
+        except Exception as e:
+            print(f"Error loading GH PAT: {e}")
+            
+    # Fallback to Google OAuth (might fail for GH)
     try:
         with open(CREDS_PATH, 'r') as f:
             data = json.load(f)
