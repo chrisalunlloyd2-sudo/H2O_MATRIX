@@ -18,13 +18,13 @@ class HeadlessOrchestrator:
     async def handle_input(self, user_input):
         # 1. RAG Pre-Flight
         context = self.rag.pre_flight_query(user_input)
-        
+
         # 2. LLM Generation
         response = self.router.run_generation(user_input, str(context))
-        
+
         # 3. Memory Persistence
         self.rag.log_event("cli_interaction", f"Q: {user_input} | A: {response}")
-        
+
         # 4. Async Headless Audio Feedback
         await self.tts.run_audio_feedback(response)
 

@@ -4,12 +4,12 @@ import asyncio
 
 class AudioManifestationEngine:
     """[PHASE 5.2/5.3] Headless TTS & Async Streaming Engine."""
-    
+
     def __init__(self):
         # Check if espeak is available
         self.tts_path = "/data/data/com.termux/files/usr/bin/espeak"
         self.tts_available = os.path.exists(self.tts_path)
-        
+
     async def speak(self, text):
         """Asynchronous text-to-speech feedback."""
         if self.tts_available:

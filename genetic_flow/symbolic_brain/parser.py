@@ -7,7 +7,7 @@ MEMORY_DB = os.path.expanduser("~/genetic_flow/tracking_db/memory.db")
 
 class SymbolicParser:
     """[PERFORMATIVE: TOKENIZE] Compiles live files into structured AST nodes."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -28,7 +28,7 @@ class SymbolicParser:
         children = []
         for child in ast.iter_child_nodes(node):
             children.append(self._get_structural_string(child))
-        
+
         if not children:
             return node_type
         return f"{node_type}({','.join(children)})"
@@ -39,7 +39,7 @@ class SymbolicParser:
             tree = ast.parse(code)
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
-            
+
             for node in ast.walk(tree):
                 parent_type = type(node).__name__
                 for child in ast.iter_child_nodes(node):
@@ -50,7 +50,7 @@ class SymbolicParser:
                         ON CONFLICT(parent_node, child_node) DO UPDATE SET
                         occurrence_count = occurrence_count + 1
                     """, (parent_type, child_type))
-            
+
             conn.commit()
             conn.close()
             return True

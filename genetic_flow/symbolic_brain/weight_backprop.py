@@ -6,7 +6,7 @@ MEMORY_DB = os.path.expanduser("~/genetic_flow/tracking_db/memory.db")
 
 class WeightBackprop:
     """[PERFORMATIVE: UPDATE] Calculates code fitness improvements and updates rule weights."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -15,10 +15,10 @@ class WeightBackprop:
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
-            
+
             # Learning rate (simulated)
             lr = 0.1
-            
+
             if fitness_improvement > 0:
                 # Success: Increment weight and success count
                 # Logarithmic adjustment: W_new = W_old + LR * log(1 + improvement)
@@ -37,7 +37,7 @@ class WeightBackprop:
                         failure_count = failure_count + 1
                     WHERE rule_id = ?
                 """, (rule_id,))
-            
+
             conn.commit()
             conn.close()
             return True

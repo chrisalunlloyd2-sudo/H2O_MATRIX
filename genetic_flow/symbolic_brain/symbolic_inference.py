@@ -5,7 +5,7 @@ MEMORY_DB = os.path.expanduser("~/genetic_flow/tracking_db/memory.db")
 
 class SymbolicInference:
     """[PERFORMATIVE: INFER] Selects target execution transformation rules."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -14,7 +14,7 @@ class SymbolicInference:
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
-            
+
             # Select rule with maximum weight for the given signature or a general fallback
             # Formula: T = argMax(W(T_i | C))
             cursor.execute("""
@@ -24,10 +24,10 @@ class SymbolicInference:
                 ORDER BY current_rule_weight DESC
                 LIMIT 1
             """, (current_sig_hash,))
-            
+
             result = cursor.fetchone()
             conn.close()
-            
+
             if result:
                 directive, weight, rule_id = result
                 return {

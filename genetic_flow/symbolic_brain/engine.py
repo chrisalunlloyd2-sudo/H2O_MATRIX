@@ -7,7 +7,7 @@ MEMORY_DB = os.path.expanduser("~/genetic_flow/tracking_db/memory.db")
 
 class SymbolicContextEngine:
     """[PERFORMATIVE: TOKENIZE] Compiles dynamic AST tree; extracts parent/child shapes."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -16,7 +16,7 @@ class SymbolicContextEngine:
         try:
             tree = ast.parse(code)
             return self._walk_signature(tree)
-        except:
+        except Exception:
             return "ERROR"
 
     def _walk_signature(self, node):
@@ -48,7 +48,7 @@ class SymbolicContextEngine:
 
 class ProductionRuleMatcher:
     """[PERFORMATIVE: MATCH] Inductive Logic Loop matching pattern variations."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -58,8 +58,8 @@ class ProductionRuleMatcher:
         cursor = conn.cursor()
         # T_hat = argMax(W(T_i | C))
         cursor.execute("""
-            SELECT rule_id, transformation_directive, current_rule_weight 
-            FROM production_rules 
+            SELECT rule_id, transformation_directive, current_rule_weight
+            FROM production_rules
             WHERE target_signature = ? OR target_signature = 'global'
             ORDER BY current_rule_weight DESC LIMIT 1
         """, (context_hash,))
@@ -69,7 +69,7 @@ class ProductionRuleMatcher:
 
 class MutationInjector:
     """[PERFORMATIVE: INJECT] Executes physical AST block mutations."""
-    
+
     def apply_mutation(self, code, directive):
         """Writes Pure Transformed Code to Disk."""
         # This is where Aider or our local Danube LLM would be guided by the directive
@@ -78,7 +78,7 @@ class MutationInjector:
 
 class WeightBackpropagator:
     """[PERFORMATIVE: UPDATE] Symbolic Backprop Step."""
-    
+
     def __init__(self, db_path=MEMORY_DB):
         self.db_path = db_path
 
@@ -90,7 +90,7 @@ class WeightBackpropagator:
         conn = sqlite3.connect(self.db_path)
         delta = 0.15 if success else -0.20
         conn.execute("""
-            UPDATE production_rules 
+            UPDATE production_rules
             SET current_rule_weight = current_rule_weight + ?,
                 success_count = success_count + ?,
                 failure_count = failure_count + ?
