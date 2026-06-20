@@ -8,7 +8,7 @@ MEMORY_DB = os.path.expanduser("~/genetic_flow/tracking_db/memory.db")
 def sync_bayesian_weights():
     """Bridge ledger.db quantum_parameters into the genetic flow loop."""
     print("--- 🚀 CLUSTER SYNC: BRIDGE INITIATED ---")
-    
+
     if not os.path.exists(LEDGER_DB):
         print(f" [!] Error: Main ledger not found at {LEDGER_DB}")
         return
@@ -20,11 +20,11 @@ def sync_bayesian_weights():
         cursor.execute("SELECT value FROM quantum_parameters WHERE key='weights'")
         row = cursor.fetchone()
         conn_ledger.close()
-        
+
         if row:
             weights = json.loads(row[0])
             print(f" [*] Synchronized Bayesian Weights: {weights}")
-            
+
             # 2. Inject into Genetic Flow (rules.sql or .env)
             # We'll append them as symbolic rules for now
             rules_path = os.path.expanduser("~/genetic_flow/symbolic_brain/rules.sql")
@@ -37,20 +37,20 @@ def sync_bayesian_weights():
 def export_optimization_stats():
     """Export genetic progress back to the main IDE ledger."""
     if not os.path.exists(MEMORY_DB): return
-    
+
     try:
         conn_mem = sqlite3.connect(MEMORY_DB)
         cursor_mem = conn_mem.cursor()
         cursor_mem.execute("SELECT hash, score, code FROM optimization_ledger ORDER BY gen DESC LIMIT 1")
         best = cursor_mem.fetchone()
         conn_mem.close()
-        
+
         if best:
             chash, score, code = best
             conn_ledger = sqlite3.connect(LEDGER_DB)
             cursor_ledger = conn_ledger.cursor()
             # Push into code_variants or a cluster status table
-            cursor_ledger.execute("INSERT OR REPLACE INTO state (key, value) VALUES (?, ?)", 
+            cursor_ledger.execute("INSERT OR REPLACE INTO state (key, value) VALUES (?, ?)",
                                  ("best_genetic_variant", f"{chash}:{score}"))
             conn_ledger.commit()
             conn_ledger.close()

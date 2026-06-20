@@ -11,10 +11,10 @@ async def process_and_store(payload):
     """The heavy lifting she does silently after your terminal is already free."""
     command = payload.get("command", "")
     exit_code = payload.get("exit_code", 0)
-    
+
     # Simple semantic proxy (simulating embedding)
     embedding = [random.random() for _ in range(384)]
-    
+
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("""
@@ -31,7 +31,7 @@ async def handle_connection(reader, writer):
     writer.write(b"ACK")
     await writer.drain()
     writer.close()
-    
+
     try:
         payload = json.loads(data.decode())
         asyncio.create_task(process_and_store(payload))
@@ -41,7 +41,7 @@ async def handle_connection(reader, writer):
 async def main():
     if os.path.exists(SOCKET_PATH):
         os.remove(SOCKET_PATH)
-        
+
     server = await asyncio.start_unix_server(handle_connection, path=SOCKET_PATH)
     print(f"--- 🚀 GEMINI CLI DAEMON ACTIVE ON {SOCKET_PATH} ---")
     async with server:

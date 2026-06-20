@@ -25,12 +25,12 @@ async def fetch_memory_context(goal: str) -> tuple[str, str]:
             constraints = await conn.fetch("SELECT content FROM core_constraints")
             goal_vector = await get_embedding(goal)
             history = await conn.fetch("""
-                SELECT content, metadata 
-                FROM operational_memory 
-                ORDER BY embedding <=> $1 
+                SELECT content, metadata
+                FROM operational_memory
+                ORDER BY embedding <=> $1
                 LIMIT 3
             """, str(goal_vector))
-    
+
     sys_constraints = "Immutable Rules:\n" + "".join([f"- {r['content']}\n" for r in constraints])
     op_history = "Past Context/Fixes:\n" + "".join([f"- {r['content']} (Meta: {r['metadata']})\n" for r in history])
     return sys_constraints, op_history
@@ -54,28 +54,28 @@ async def fix_step(step_data: dict, error_output: str, sys_constraints: str, dec
             model="gpt-4o", messages=messages, response_format={"type": "json_object"}, temperature=0.1
         )
         fix_cmd = json.loads(response.choices[0].message.content).get("command", "")
-        
+
         # Binary Entropy Optimization Gate
         pre_entropy = decompiler.decompile_and_score(step_data['action_cmd'])
         await run_cmd(fix_cmd)
         post_entropy = decompiler.decompile_and_score(fix_cmd)
-        
+
         v_code, v_out = await run_cmd(step_data['verify_cmd'])
         if v_code == 0 and post_entropy <= pre_entropy:
             return True
-            
+
         messages.append({"role": "user", "content": f"Failed (Entropy delta: {post_entropy-pre_entropy}). Fix again."})
     return False
 
 async def main(goal: str):
     sys_constraints, op_history = await fetch_memory_context(goal)
     decompiler = BinaryDecompilationEngine()
-    
+
     # 1. GENERATE PLAN
     messages = [{"role": "system", "content": "You are a master architect. Output JSON plan."}, {"role": "user", "content": f"Goal: {goal}\n\n{op_history}"}]
     response = await client.chat.completions.create(model="gpt-4o", messages=messages, response_format={"type": "json_object"})
     plan = json.loads(response.choices[0].message.content).get("plan", [])
-    
+
     # 2. EXECUTE & VERIFY
     for step in plan:
         await run_cmd(step['action_cmd'])

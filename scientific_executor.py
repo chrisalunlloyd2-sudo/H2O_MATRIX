@@ -19,7 +19,7 @@ def log_scientific_step(step_num, step_desc, observation, hypothesis, experiment
 def get_next_step():
     with open(STEPS_FILE, "r") as f:
         content = f.read()
-    
+
     match = re.search(r"- \[ \] \*\*Step (\d+):\*\* (.*)", content)
     if match:
         return int(match.group(1)), match.group(2)
@@ -28,7 +28,7 @@ def get_next_step():
 def mark_step_complete(step_num):
     with open(STEPS_FILE, "r") as f:
         content = f.read()
-    
+
     new_content = re.sub(rf"- \[ \] \*\*Step {step_num}:\*\*", f"- [x] **Step {step_num}:**", content)
     with open(STEPS_FILE, "w") as f:
         f.write(new_content)
@@ -38,34 +38,34 @@ def run_with_limits(command):
     # We use a 1:3 work:rest ratio to approximate 25% CPU cap if cpulimit is missing
     print(f"Executing: {command} (Pinned to cores 0,1,2)")
     start_time = time.time()
-    
-    process = subprocess.Popen(["taskset", "-c", "0,1,2"] + command.split(), 
+
+    process = subprocess.Popen(["taskset", "-c", "0,1,2"] + command.split(),
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     stdout, stderr = process.communicate()
-    
+
     duration = time.time() - start_time
     # Duty cycle: if it ran for X seconds, it should have taken 4X to be at 25% CPU.
     # So we wait 3X.
     cooldown = duration * 3
     print(f"Step took {duration:.2f}s. Cooling down for {cooldown:.2f}s (25% CPU cap)...")
     time.sleep(cooldown)
-    
+
     # Plus mandatory 5s delay
     print("Mandatory 5s delay...")
     time.sleep(5)
-    
+
     return stdout, stderr
 
 def execute_step(step_num, step_desc):
     observation = f"System is ready to execute Step {step_num}."
     hypothesis = f"Executing the mutation pass will successfully modify the AST without crashing."
-    
+
     if step_num == 9:
         # Step 9: Execute first local neural-symbolic mutation pass.
         # We'll run a single iteration of the runtime loop.
         experiment = "python3 genetic_flow/runtime_loop.py --max-gen 1"
         stdout, stderr = run_with_limits(experiment)
-        
+
         if stderr and "Error" in stderr:
             result = f"FAILURE: {stderr}"
         else:

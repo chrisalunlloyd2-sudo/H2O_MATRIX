@@ -29,7 +29,7 @@ def get_cluster_topology():
         cursor.execute("SELECT id, status, last_heartbeat FROM cluster_nodes")
         nodes = cursor.fetchall()
         conn.close()
-        
+
         topo_str = "CLUSTER TOPOLOGY:\n"
         now = int(time.time())
         for nid, status, heartbeat in nodes:

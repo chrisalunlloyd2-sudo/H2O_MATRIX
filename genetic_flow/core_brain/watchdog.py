@@ -11,7 +11,7 @@ class Watchdog:
             self.stuck_rounds += 1
         else:
             self.stuck_rounds = 0
-        
+
         if self.stuck_rounds >= self.max_rounds:
             # TRIGGER: Public Cloud Gemini API circuit breaker
             return True, self.stuck_rounds
