@@ -1,1077 +1,313 @@
-# 🌌 H2O MATRIX: UNIFIED ENTERPRISE ECOSYSTEM
-[timedat: 2026-05-23]
-
-## 🎯 MISSION
-A consolidated neural-symbolic development environment merging the H2O IDE interface with the Matrix GEN8 evolutionary engine.
-
-## 📋 TOPOLOGICAL FILE TREE
-```text
-./
-    900_STEPS_SINGULARITY.md
-    Blueprint.md
-    CHANGELOG.md
-    CLIDE_SPEC.md
-    ENTERPRISE_INIT.p
-    GEMINI.md
-    LOGOS_PURPOSE.md
-    MATRIX_GEN8_MASTER_PLAN.md
-    MIGRATION_PLAN.md
-    MatrixIDE.apk
-    MatrixIDE.apk.idsig
-    MatrixIDE_32bit.apk
-    MatrixIDE_32bit.apk.idsig
-    MatrixIDE_32bit.apk.qsig
-    PROJECT_LOG.md
-    PROJECT_MANIFEST.md
-    PROTOCOL_AUTOPSY.md
-    README.md
-    RESTORE_POINT.md
-    SCIENTIFIC_LOG.md
-    SINGULARITY_LOG.md
-    SINGULARITY_ROADMAP.md
-    SPRITE_NET_MANIFEST.md
-    bootstrap_L1.sh
-    clide.sh
-    genetic_optimizer.py
-    initialize_enterprise_project.py
-    logfile
-    package-lock.json
-    run_singularity.sh
-    scientific_executor.py
-    scientific_orchestrator.py
-    temp_variant.rs
-    test_router.py
-    test_stderr.txt
-    test_stdout.txt
-    .termux/
-        termux.properties
-    .npm/
-        _update-notifier-last-checked
-        _logs/
-            2026-05-20T02_02_32_123Z-debug-0.log
-            2026-05-20T02_02_42_891Z-debug-0.log
-            2026-05-22T22_48_15_603Z-debug-0.log
-            2026-05-22T22_48_25_344Z-debug-0.log
-            2026-05-22T22_50_15_089Z-debug-0.log
-            2026-05-22T22_50_25_884Z-debug-0.log
-            2026-05-22T22_56_56_263Z-debug-0.log
-            2026-05-22T23_08_00_445Z-debug-0.log
-            2026-05-22T23_09_11_211Z-debug-0.log
-            2026-05-23T18_01_49_145Z-debug-0.log
-            2026-05-23T18_01_53_229Z-debug-0.log
-        _cacache/
-    .cache/
-        node-gyp/
-        pip/
-        go-build/
-            README
-            trim.txt
-    .gemini/
-        github_token.txt
-        google_accounts.json
-        installation_id
-        oauth_creds.json
-        projects.json
-        settings.json
-        state.json
-        trustedFolders.json
-        tmp/
-        history/
-    .matrix_ide/
-        env.sh
-        run_delivery_pipeline_hook.sh
-        run_ide.sh
-        run_retrospective.sh
-        core/
-            Cargo.lock
-            Cargo.toml
-            advanced_bayesian
-            advanced_bayesian.rs
-            agent_bridge.py
-            ast_bit_parallel
-            ast_bit_parallel.rs
-            audio_loop.py
-            bayesian_persist.py
-            bayesian_threshold
-            bayesian_threshold.rs
-            build_pipeline.sh
-            cluster_sync_hook.sh
-            deterministic_tui.py
-            enterprise_core
-            enterprise_core.rs
-            execute_gen8_loop.py
-            front_to_back_test.sh
-            genetic_crossover
-            genetic_crossover.rs
-            genetic_engine
-            genetic_engine.rs
-            genetic_runtime_loop.py
-            global_auditor.py
-            handoff_evolver.py
-            headless_test_gui.py
-            init_memory_db.py
-            injection_attack.py
-            key_hook
-            key_hook.rs
-            key_hook_compiled
-            kqml_protocol.py
-            log_manager.py
-            manifest_100_phases.py
-            manifest_100_web_pages.py
-            manifest_aggregator.py
-            manifold_renderer.py
-            matrix_core
-            mesh_reconciler.py
-            micro_mutator
-            micro_mutator.rs
-            minhash_engine
-            minhash_engine.rs
-            ollama_mock.py
-            populate_900_features.py
-            populate_900_fidelity_features.py
-            post_compilation_test.py
-            program_evolver.py
-            prompt_evolver.py
-            quantum_axiom_tester
-            quantum_axiom_tester.rs
-            quantum_signer
-            quantum_signer.rs
-            rag_pipeline.py
-            recursive_auditor
-            recursive_auditor.rs
-            refine_matrix.py
-            retro_validator
-            retro_validator.rs
-            sanitizer
-            self_healing_attestation
-            self_healing_attestation.rs
-            self_healing_engine.py
-            stamped_output.rs
-            state_freezer.py
-            storage_safeguard.py
-            stress_tester.py
-            sync_engine.py
-            system_trace_gen8.py
-            threaded_auditor
-            threaded_auditor.rs
-            topology_mapper
-            topology_mapper.rs
-            tui_canvas.py
-            uber_verification_framework.py
-            validation_engine
-            validation_engine.rs
-            verify_realization.py
-        pyramid/
-            advanced_web_gen.py
-            code_sprite.py
-            ingest_hook.py
-            input_emulator_sprite.py
-            sprite.py
-            tier_router.sh
-            token_expander.py
-            web_gen_test.py
-        database/
-            init_db.py
-            init_realization.py
-            init_schema.py
-            ledger.db
-            memory_foundation.db
-            seed_data.sql
-        templates/
-        docs/
-            MEMORY.md
-            ROADMAP.md
-            UBER_MANIFEST.md
-        state/
-            current_prediction.json
-        build/
-            AndroidManifest.xml
-            stamped_output.rs
-        libs/
-            android.jar
-            matrix.keystore
-        web_gen_advanced/
-            page_0.html
-            page_1.html
-            page_10.html
-            page_11.html
-            page_12.html
-            page_13.html
-            page_14.html
-            page_15.html
-            page_16.html
-            page_17.html
-            page_18.html
-            page_19.html
-            page_2.html
-            page_20.html
-            page_21.html
-            page_22.html
-            page_23.html
-            page_24.html
-            page_25.html
-            page_26.html
-            page_27.html
-            page_28.html
-            page_29.html
-            page_3.html
-            page_30.html
-            page_31.html
-            page_32.html
-            page_33.html
-            page_34.html
-            page_35.html
-            page_36.html
-            page_37.html
-            page_38.html
-            page_39.html
-            page_4.html
-            page_40.html
-            page_41.html
-            page_42.html
-            page_43.html
-            page_44.html
-            page_45.html
-            page_46.html
-            page_47.html
-            page_48.html
-            page_49.html
-            page_5.html
-            page_50.html
-            page_51.html
-            page_52.html
-            page_53.html
-            page_54.html
-            page_55.html
-            page_56.html
-            page_57.html
-            page_58.html
-            page_59.html
-            page_6.html
-            page_60.html
-            page_61.html
-            page_62.html
-            page_63.html
-            page_64.html
-            page_65.html
-            page_66.html
-            page_67.html
-            page_68.html
-            page_69.html
-            page_7.html
-            page_70.html
-            page_71.html
-            page_72.html
-            page_73.html
-            page_74.html
-            page_75.html
-            page_76.html
-            page_77.html
-            page_78.html
-            page_79.html
-            page_8.html
-            page_80.html
-            page_81.html
-            page_82.html
-            page_83.html
-            page_84.html
-            page_85.html
-            page_86.html
-            page_87.html
-            page_88.html
-            page_89.html
-            page_9.html
-            page_90.html
-            page_91.html
-            page_92.html
-            page_93.html
-            page_94.html
-            page_95.html
-            page_96.html
-            page_97.html
-            page_98.html
-            page_99.html
-        variants/
-            high_quality_cache.rs
-            test_cache.rs
-        logs/
-            agy_master.log
-            agy_processed.log
-            enterprise_init.log
-            init.log
-            runtime.log
-        seeds/
-        prefetch_cache/
-        cluster/
-            param_diff.sql
-        core_cargo/
-            Cargo.lock
-            Cargo.toml
-        scrub_vault/
-        retro_vault/
-        quantum_validation/
-            prompt_evolution.jsonl
-            quantum_checksum.sha256
-            quantum_manifest.json
-            roadmap.md
-        genetic_flow/
-            install_genetic_flow.sh
-            runtime_loop.py
-        phases/
-        pg_data/
-            PG_VERSION
-            pg_hba.conf
-            pg_ident.conf
-            postgresql.auto.conf
-            postgresql.conf
-            postmaster.opts
-            postmaster.pid
-        models/
-            danube3.gguf
-        notes/
-        anti-gravity/
-            engine.py
-    .ssh/
-        authorized_keys
-    storage/
-    .cargo/
-        registry/
-            CACHEDIR.TAG
-    .git/
-        COMMIT_EDITMSG
-        HEAD
-        ORIG_HEAD
-        config
-        description
-        index
-        hooks/
-            applypatch-msg.sample
-            commit-msg.sample
-            fsmonitor-watchman.sample
-            post-update.sample
-            pre-applypatch.sample
-            pre-commit.sample
-            pre-merge-commit.sample
-            pre-push.sample
-            pre-rebase.sample
-            pre-receive.sample
-            prepare-commit-msg.sample
-            push-to-checkout.sample
-            sendemail-validate.sample
-            update.sample
-        info/
-            exclude
-            refs
-        refs/
-        objects/
-        logs/
-            HEAD
-    llama.cpp/
-        AGENTS.md
-        AUTHORS
-        CLAUDE.md
-        CMakeLists.txt
-        CMakePresets.json
-        CODEOWNERS
-        CONTRIBUTING.md
-        LICENSE
-        Makefile
-        README.md
-        SECURITY.md
-        build-xcframework.sh
-        convert_hf_to_gguf.py
-        convert_hf_to_gguf_update.py
-        convert_llama_ggml_to_gguf.py
-        convert_lora_to_gguf.py
-        flake.nix
-        mypy.ini
-        pyproject.toml
-        pyrightconfig.json
-        requirements.txt
-        ty.toml
-        .git/
-            HEAD
-            config
-            description
-            index
-            packed-refs
-            shallow
-        .devops/
-            cann.Dockerfile
-            cpu.Dockerfile
-            cuda.Dockerfile
-            intel.Dockerfile
-            llama-cli-cann.Dockerfile
-            llama-cpp-cuda.srpm.spec
-            llama-cpp.srpm.spec
-            musa.Dockerfile
-            openvino.Dockerfile
-            rocm.Dockerfile
-            s390x.Dockerfile
-            tools.sh
-            vulkan.Dockerfile
-        .gemini/
-            settings.json
-        .github/
-            labeler.yml
-            pull_request_template.md
-        .pi/
-        app/
-            CMakeLists.txt
-            llama.cpp
-        benches/
-        ci/
-            README-MUSA.md
-            README.md
-            run.sh
-        cmake/
-            arm64-apple-clang.cmake
-            arm64-linux-clang.cmake
-            arm64-windows-llvm.cmake
-            build-info.cmake
-            common.cmake
-            download-models.cmake
-            git-vars.cmake
-            license.cmake
-            llama-config.cmake.in
-            llama.pc.in
-            riscv64-spacemit-linux-gnu-gcc.cmake
-            x64-windows-llvm.cmake
-        common/
-            CMakeLists.txt
-            arg.cpp
-            arg.h
-            base64.hpp
-            build-info.cpp.in
-            build-info.h
-            chat-auto-parser-generator.cpp
-            chat-auto-parser-helpers.cpp
-            chat-auto-parser-helpers.h
-            chat-auto-parser.h
-            chat-diff-analyzer.cpp
-            chat-peg-parser.cpp
-            chat-peg-parser.h
-            chat.cpp
-            chat.h
-            common.cpp
-            common.h
-            console.cpp
-            console.h
-            debug.cpp
-            debug.h
-            download.cpp
-            download.h
-            fit.cpp
-            fit.h
-            hf-cache.cpp
-            hf-cache.h
-            http.h
-            json-partial.cpp
-            json-partial.h
-            json-schema-to-grammar.cpp
-            json-schema-to-grammar.h
-            llguidance.cpp
-            log.cpp
-            log.h
-            ngram-cache.cpp
-            ngram-cache.h
-            ngram-map.cpp
-            ngram-map.h
-            ngram-mod.cpp
-            ngram-mod.h
-            peg-parser.cpp
-            peg-parser.h
-            preset.cpp
-            preset.h
-            reasoning-budget.cpp
-            reasoning-budget.h
-            regex-partial.cpp
-            regex-partial.h
-            sampling.cpp
-            sampling.h
-            speculative.cpp
-            speculative.h
-            unicode.cpp
-            unicode.h
-        conversion/
-            __init__.py
-            afmoe.py
-            arctic.py
-            baichuan.py
-            bailingmoe.py
-            base.py
-            bert.py
-            bitnet.py
-            bloom.py
-            chameleon.py
-            chatglm.py
-            codeshell.py
-            cogvlm.py
-            command_r.py
-            dbrx.py
-            deci.py
-            deepseek.py
-            dots1.py
-            dotsocr.py
-            dream.py
-            ernie.py
-            exaone.py
-            falcon.py
-            falcon_h1.py
-            gemma.py
-            glm.py
-            gpt2.py
-            gpt_oss.py
-            gptneox.py
-            granite.py
-            grok.py
-            grovemoe.py
-            hunyuan.py
-            internlm.py
-            internvl.py
-            jais.py
-            jamba.py
-            januspro.py
-            kimi_linear.py
-            kimivl.py
-            lfm2.py
-            lighton_ocr.py
-            llada.py
-            llama.py
-            llama4.py
-            llava.py
-            maincoder.py
-            mamba.py
-            mimo.py
-            minicpm.py
-            minimax.py
-            mistral.py
-            mistral3.py
-            mpt.py
-            nemotron.py
-            olmo.py
-            openelm.py
-            orion.py
-            pangu.py
-            phi.py
-            pixtral.py
-            plamo.py
-            plm.py
-            qwen.py
-            qwen3vl.py
-            qwenvl.py
-            refact.py
-            rwkv.py
-            sarashina2.py
-            smallthinker.py
-            smolvlm.py
-            stablelm.py
-            starcoder.py
-            step3.py
-            t5.py
-            ultravox.py
-            wavtokenizer.py
-            xverse.py
-            youtuvl.py
-        docs/
-            android.md
-            autoparser.md
-            build-riscv64-spacemit.md
-            build-s390x.md
-            build.md
-            docker.md
-            function-calling.md
-            install.md
-            llguidance.md
-            multi-gpu.md
-            multimodal.md
-            ops.md
-            preset.md
-            speculative.md
-        examples/
-            CMakeLists.txt
-            convert_legacy_llama.py
-            json_schema_pydantic_example.py
-            json_schema_to_grammar.py
-            llama.vim
-            pydantic_models_to_grammar.py
-            pydantic_models_to_grammar_examples.py
-            reason-act.sh
-            regex_to_grammar.py
-            server-llama2-13B.sh
-            server_embd.py
-            ts-type-to-grammar.sh
-        ggml/
-            CMakeLists.txt
-        gguf-py/
-            LICENSE
-            README.md
-            pyproject.toml
-        grammars/
-            README.md
-            arithmetic.gbnf
-            c.gbnf
-            chess.gbnf
-            english.gbnf
-            japanese.gbnf
-            json.gbnf
-            json_arr.gbnf
-            list.gbnf
-        include/
-            llama-cpp.h
-            llama.h
-        licenses/
-            LICENSE-jsonhpp
-        media/
-            llama0-banner.png
-            llama0-logo.png
-            llama1-banner.png
-            llama1-icon-transparent.png
-            llama1-icon-transparent.svg
-            llama1-icon.png
-            llama1-icon.svg
-            llama1-logo.png
-            llama1-logo.svg
-            matmul.png
-            matmul.svg
-        models/
-            ggml-vocab-aquila.gguf
-            ggml-vocab-baichuan.gguf
-            ggml-vocab-bert-bge.gguf
-            ggml-vocab-bert-bge.gguf.inp
-            ggml-vocab-bert-bge.gguf.out
-            ggml-vocab-command-r.gguf
-            ggml-vocab-command-r.gguf.inp
-            ggml-vocab-command-r.gguf.out
-            ggml-vocab-deepseek-coder.gguf
-            ggml-vocab-deepseek-coder.gguf.inp
-            ggml-vocab-deepseek-coder.gguf.out
-            ggml-vocab-deepseek-llm.gguf
-            ggml-vocab-deepseek-llm.gguf.inp
-            ggml-vocab-deepseek-llm.gguf.out
-            ggml-vocab-falcon.gguf
-            ggml-vocab-falcon.gguf.inp
-            ggml-vocab-falcon.gguf.out
-            ggml-vocab-gemma-4.gguf
-            ggml-vocab-gemma-4.gguf.inp
-            ggml-vocab-gemma-4.gguf.out
-            ggml-vocab-gpt-2.gguf
-            ggml-vocab-gpt-2.gguf.inp
-            ggml-vocab-gpt-2.gguf.out
-            ggml-vocab-gpt-neox.gguf
-            ggml-vocab-llama-bpe.gguf
-            ggml-vocab-llama-bpe.gguf.inp
-            ggml-vocab-llama-bpe.gguf.out
-            ggml-vocab-llama-spm.gguf
-            ggml-vocab-llama-spm.gguf.inp
-            ggml-vocab-llama-spm.gguf.out
-            ggml-vocab-mpt.gguf
-            ggml-vocab-mpt.gguf.inp
-            ggml-vocab-mpt.gguf.out
-            ggml-vocab-nomic-bert-moe.gguf
-            ggml-vocab-phi-3.gguf
-            ggml-vocab-phi-3.gguf.inp
-            ggml-vocab-phi-3.gguf.out
-            ggml-vocab-qwen2.gguf
-            ggml-vocab-qwen2.gguf.inp
-            ggml-vocab-qwen2.gguf.out
-            ggml-vocab-qwen35.gguf
-            ggml-vocab-qwen35.gguf.inp
-            ggml-vocab-qwen35.gguf.out
-            ggml-vocab-refact.gguf
-            ggml-vocab-refact.gguf.inp
-            ggml-vocab-refact.gguf.out
-            ggml-vocab-starcoder.gguf
-            ggml-vocab-starcoder.gguf.inp
-            ggml-vocab-starcoder.gguf.out
-        pocs/
-            CMakeLists.txt
-        requirements/
-            requirements-all.txt
-            requirements-compare-llama-bench.txt
-            requirements-convert_hf_to_gguf.txt
-            requirements-convert_hf_to_gguf_update.txt
-            requirements-convert_legacy_llama.txt
-            requirements-convert_llama_ggml_to_gguf.txt
-            requirements-convert_lora_to_gguf.txt
-            requirements-gguf_editor_gui.txt
-            requirements-pydantic.txt
-            requirements-server-bench.txt
-            requirements-test-tokenizer-random.txt
-            requirements-tool_bench.txt
-        scripts/
-            bench-models.sh
-            build-info.sh
-            check-requirements.sh
-            compare-commits.sh
-            compare-llama-bench.py
-            compare-logprobs.py
-            create_ops_docs.py
-            debug-test.sh
-            fetch_server_test_models.py
-            gen-authors.sh
-            gen-unicode-data.py
-            get-flags.mk
-            get-hellaswag.sh
-            get-pg.sh
-            get-wikitext-2.sh
-            get-winogrande.sh
-            get_chat_template.py
-            git-bisect-run.sh
-            git-bisect.sh
-            hf.sh
-            install-oneapi.bat
-            pr2wt.sh
-            serve-static.js
-            server-bench.py
-            server-test-function-call.py
-            server-test-model.py
-            server-test-parallel-tc.py
-            server-test-structured.py
-            sync-ggml-am.sh
-            sync-ggml.last
-            sync-ggml.sh
-            sync_vendor.py
-            tool_bench.py
-            tool_bench.sh
-            ui-download.cmake
-            verify-checksum-models.py
-            wc2wt.sh
-            xxd.cmake
-        src/
-            CMakeLists.txt
-            llama-adapter.cpp
-            llama-adapter.h
-            llama-arch.cpp
-            llama-arch.h
-            llama-batch.cpp
-            llama-batch.h
-            llama-chat.cpp
-            llama-chat.h
-            llama-context.cpp
-            llama-context.h
-            llama-cparams.cpp
-            llama-cparams.h
-            llama-ext.h
-            llama-grammar.cpp
-            llama-grammar.h
-            llama-graph.cpp
-            llama-graph.h
-            llama-hparams.cpp
-            llama-hparams.h
-            llama-impl.cpp
-            llama-impl.h
-            llama-io.cpp
-            llama-io.h
-            llama-kv-cache-iswa.cpp
-            llama-kv-cache-iswa.h
-            llama-kv-cache.cpp
-            llama-kv-cache.h
-            llama-kv-cells.h
-            llama-memory-hybrid-iswa.cpp
-            llama-memory-hybrid-iswa.h
-            llama-memory-hybrid.cpp
-            llama-memory-hybrid.h
-            llama-memory-recurrent.cpp
-            llama-memory-recurrent.h
-            llama-memory.cpp
-            llama-memory.h
-            llama-mmap.cpp
-            llama-mmap.h
-            llama-model-loader.cpp
-            llama-model-loader.h
-            llama-model-saver.cpp
-            llama-model-saver.h
-            llama-model.cpp
-            llama-model.h
-            llama-quant.cpp
-            llama-quant.h
-            llama-sampler.cpp
-            llama-sampler.h
-            llama-vocab.cpp
-            llama-vocab.h
-            llama.cpp
-            unicode-data.cpp
-            unicode-data.h
-            unicode.cpp
-            unicode.h
-        tests/
-            CMakeLists.txt
-            export-graph-ops.cpp
-            get-model.cpp
-            get-model.h
-            gguf-model-data.cpp
-            gguf-model-data.h
-            test-alloc.cpp
-            test-arg-parser.cpp
-            test-autorelease.cpp
-            test-backend-ops.cpp
-            test-backend-sampler.cpp
-            test-barrier.cpp
-            test-c.c
-            test-chat-auto-parser.cpp
-            test-chat-peg-parser.cpp
-            test-chat-template.cpp
-            test-chat.cpp
-            test-double-float.cpp
-            test-gbnf-validator.cpp
-            test-gguf-model-data.cpp
-            test-gguf.cpp
-            test-grammar-integration.cpp
-            test-grammar-llguidance.cpp
-            test-grammar-parser.cpp
-            test-jinja.cpp
-            test-json-partial.cpp
-            test-json-schema-to-grammar.cpp
-            test-llama-archs.cpp
-            test-llama-grammar.cpp
-            test-log.cpp
-            test-lora-conversion-inference.sh
-            test-model-load-cancel.cpp
-            test-mtmd-c-api.c
-            test-opt.cpp
-            test-peg-parser.cpp
-            test-quant-type-selection.cpp
-            test-quantize-fns.cpp
-            test-quantize-perf.cpp
-            test-quantize-stats.cpp
-            test-reasoning-budget.cpp
-            test-recurrent-state-rollback.cpp
-            test-regex-partial.cpp
-            test-rope.cpp
-            test-sampling.cpp
-            test-state-restore-fragmented.cpp
-            test-thread-safety.cpp
-            test-tokenizer-0.cpp
-            test-tokenizer-0.py
-            test-tokenizer-0.sh
-            test-tokenizer-1-bpe.cpp
-            test-tokenizer-1-spm.cpp
-            test-tokenizer-random.py
-            test-tokenizers-repo.sh
-            testing.h
-        tools/
-            CMakeLists.txt
-        vendor/
-        build/
-            CMakeCache.txt
-            CTestTestfile.cmake
-            DartConfiguration.tcl
-            Makefile
-            cmake_install.cmake
-            compile_commands.json
-            license.cpp
-            llama-config.cmake
-            llama-version.cmake
-            llama.pc
-    genetic_flow/
-        __init__.py
-        install_genetic_flow.sh
-        runtime_loop.py
-        core_brain/
-            __init__.py
-            router.py
-            target_feature.py
-            test_harness.py
-            tui_layout.py
-            watchdog.py
-        tracking_db/
-            __init__.py
-            memory.db
-            writer.py
-        logs/
-            loop_test.log
-            master_loop_final.log
-            master_loop_verify.log
-        __pycache__/
-            __init__.cpython-313.pyc
-        symbolic_brain/
-            __init__.py
-            engine.py
-            extractor.py
-            parser.py
-            rules.sql
-            symbolic_inference.py
-            weight_backprop.py
-        cluster/
-            __init__.py
-            sync_hook.py
-            topology_mapper.py
-        pyramid/
-            __init__.py
-            code_sprite.py
-        architecture/
-        models/
-            h2o-danube3-500m-base-Q4_K_M.gguf
-            h2o-danube3-500m-chat-Q4_K_M.gguf
-            llama-cli-32bit
-        memory_pipeline/
-            __init__.py
-            audio_engine.py
-            headless_orchestrator.py
-            rag_interceptor.py
-        memory_daemon/
-            gemini_client.py
-            gemini_daemon.py
-        master_logic/
-            gemini_agent.py
-    .config/
-        pulse/
-            b00ee31c1d16d8c8436ad51b6a0d178c-card-database.simple
-            b00ee31c1d16d8c8436ad51b6a0d178c-default-sink
-            b00ee31c1d16d8c8436ad51b6a0d178c-default-source
-            b00ee31c1d16d8c8436ad51b6a0d178c-device-volumes.simple
-            b00ee31c1d16d8c8436ad51b6a0d178c-stream-volumes.simple
-            cookie
-    ~/
-        .matrix_ide/
-    agy-src/
-        CHANGELOG.md
-        README.md
-        agy-cli-demo.gif
-        .git/
-            HEAD
-            config
-            description
-            index
-            packed-refs
-    agy-cli-go/
-        agy-go
-        go.mod
-        main.go
-    go/
-        pkg/
-    H2OIDE/
-        Blueprint.md
-        CHANGELOG.md
-        DATA_FLOW.md
-        ENTERPRISE_INIT.p
-        GLOBAL_PEDAGOGY.md
-        PEDAGOGY_LEDGER_DUMP.sql
-        PROJECT_LOG.md
-        PROMPT_GUIDE.md
-        README.md
-        README_ENTERPRISE.md
-        SESSION_CHATS.jsonl
-        agy
-        agy_main.go
-        daemon.py
-        genetic_optimizer.py
-        initialize_enterprise_project.py
-        network_hook.py
-        pedagogy_loop.py
-        teaching_sandbox/
-        skills/
-            terminal.json
-    bash_lora_src/
-        adapter_config.json
-        adapter_model.bin
-    tmp_extract/
-        VIPER_SHIPMENT_STAGING/
-            VIPER_FORMATTING_SPEC.md
-```
-
-## ⚡ INTEGRATED PERFORMATIVES
-- [PERFORMATIVE: MERGE] H2O IDE + Matrix Home consolidation.
-- [PERFORMATIVE: SYNC] Unified GitHub repository manifestation.
-- [PERFORMATIVE: TEST] Granular feature verification initialized.
-
-## 🏗️ ARCHITECTURE
-Refer to [Blueprint.md](Blueprint.md) for the unified data flow and agent orchestration layers.
-
-
-# --- FOUNDRY v10.2 RESTORATION & EXPANSION ---
 # H2O_MATRIX
-================
 
-## Overview
-H2O_MATRIX is a cutting-edge, open-source project designed to revolutionize the field of matrix operations. This project is meticulously standardized to the v10.2 System Bible spec, ensuring the highest level of quality and maintainability.
+> H2O_MATRIX — part of the Viper RAID-0 workstation system.
 
-## ASCII Data Flow Chart
+*Auto-generated 2026-06-26 23:31 from source — branch `main`, 37 Python modules, 31 other files.*
+
+## Architecture
+
 ```
-                                      +---------------+
-                                      |  User Input  |
-                                      +---------------+
-                                             |
-                                             |
-                                             v
-                                      +---------------+
-                                      |  Input Validation  |
-                                      +---------------+
-                                             |
-                                             |
-                                             v
-                                      +---------------+
-                                      |  Matrix Creation  |
-                                      +---------------+
-                                             |
-                                             |
-                                             v
-                                      +---------------+
-                                      |  Matrix Operations  |
-                                      |  (Addition, Subtraction,  |
-                                      |   Multiplication, etc.)  |
-                                      +---------------+
-                                             |
-                                             |
-                                             v
-                                      +---------------+
-                                      |  Result Processing  |
-                                      +---------------+
-                                             |
-                                             |
-                                             v
-                                      +---------------+
-                                      |  Output Generation  |
-                                      +---------------+
+  .director_payload.md
+  .gitignore
+  900_STEPS_SINGULARITY.md
+  Blueprint.md
+  CHANGELOG.md
+  CLIDE_SPEC.md
+  ENTERPRISE_INIT.p
+  GEMINI.md
+  LOGOS_PURPOSE.md
+  MATRIX_GEN8_MASTER_PLAN.md
+  MIGRATION_PLAN.md
+  PROJECT_LOG.md
+  H2OIDE/
+  agy-cli-go/
+    agy-go
+    go.mod
+    main.go
+  genetic_flow/
+    .aider.conf.json
+    .env
+    .gitignore
+    __init__.py
+    install_genetic_flow.sh
+    runtime_loop.py
+    cluster/
+      __init__.py
+      sync_hook.py
+      topology_mapper.py
+    core_brain/
+      __init__.py
+      router.py
+      target_feature.py
+      test_harness.py
+      tui_layout.py
+      watchdog.py
+      binary/
+        binary_code_bod.txt
+      binary_engine/
+        __init__.py
+        decompiler.py
+    master_logic/
+      gemini_agent.py
+    memory_daemon/
+      gemini_client.py
+      gemini_daemon.py
+    memory_pipeline/
+      __init__.py
+      audio_engine.py
+      headless_orchestrator.py
+      rag_interceptor.py
+    pyramid/
+      __init__.py
+      code_sprite.py
+    symbolic_brain/
+      __init__.py
+      engine.py
+      extractor.py
+      parser.py
+      rules.sql
+      symbolic_inference.py
+      weight_backprop.py
+    tracking_db/
+      __init__.py
+      writer.py
+  src/
+    main.py
+    matrix_operations.py
+  tmp_extract/
+    VIPER_SHIPMENT_STAGING/
+      VIPER_FORMATTING_SPEC.md
+      JRM/
 ```
 
-## Badges
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://img.shields.io/badge/Build-Passing-green.svg)](https://travis-ci.org/)
-[![Version](https://img.shields.io/badge/Version-1.0.0-red.svg)](https://semver.org/)
+## Dependencies
 
-## Directory Structure
+External packages imported by this project:
+
+`asyncpg`, `core_brain`, `dis`, `dotenv`, `genetic_flow`, `kqml_protocol`, `numpy`, `openai`, `rag_pipeline`, `requests`, `rich`
+
+## How to run
+
+Executable entry points (have a `__main__` block):
+
+- `python genetic_flow/cluster/sync_hook.py`
+- `python genetic_flow/cluster/topology_mapper.py`
+- `python genetic_flow/master_logic/gemini_agent.py`
+- `python genetic_flow/memory_daemon/gemini_client.py`
+- `python genetic_flow/memory_daemon/gemini_daemon.py`
+- `python genetic_flow/memory_pipeline/audio_engine.py`
+- `python genetic_flow/memory_pipeline/headless_orchestrator.py`
+- `python genetic_flow/memory_pipeline/rag_interceptor.py`
+- `python genetic_flow/pyramid/code_sprite.py`
+- `python genetic_flow/runtime_loop.py`
+- `python genetic_flow/symbolic_brain/extractor.py`
+- `python genetic_flow/symbolic_brain/parser.py`
+
+## Modules
+
+### `genetic_flow/cluster/sync_hook.py`
+
+- `sync_bayesian_weights()` — Bridge ledger.db quantum_parameters into the genetic flow loop.
+- `export_optimization_stats()` — Export genetic progress back to the main IDE ledger.
+
+### `genetic_flow/cluster/topology_mapper.py`
+
+- `initialize_cluster_table()`
+- `update_heartbeat(node_id)` — Updates the heartbeat for a specific cluster node.
+- `get_cluster_topology()` — Returns a string representation of the cluster topology for the TUI.
+
+### `genetic_flow/core_brain/binary_engine/decompiler.py`
+
+- **class `BinaryDecompilationEngine`** — Airgapped processor that translates Python logic into binary opcode math.
+  - methods: `decompile_and_score`
+
+### `genetic_flow/core_brain/router.py`
+
+- **class `LocalAgentRouter`** — [PERFORMATIVE: ROUTE] Native 32-bit llama-cli Wrapper with KQML/Vector Handoff.
+  - methods: `get_management_rules`, `run_generation`, `clean_code`
+- `extract_clean_code(raw_stream)`
+
+### `genetic_flow/core_brain/target_feature.py`
+
+- `algorithm(n)`
+
+### `genetic_flow/core_brain/test_harness.py`
+
+- **class `StatisticalEvaluator`** — [PERFORMATIVE: EVALUATE] Evaluates microsecond trends via IQR variance algorithms (Pure Python).
+  - methods: `evaluate_performance`
+- `evaluate()`
+
+### `genetic_flow/core_brain/tui_layout.py`
+
+- `get_last_insight()`
+- `generate_dashboard(gen, fitness, code_str, stuck_count, max_stuck, sprite_status)`
+
+### `genetic_flow/core_brain/watchdog.py`
+
+- **class `Watchdog`**
+  - methods: `check_stagnation`, `get_hyperparameter_adjustment`, `trigger_cloud_escalation`
+
+### `genetic_flow/master_logic/gemini_agent.py`
+
+- `get_embedding(text)`
+- `fetch_memory_context(goal)`
+- `run_cmd(cmd)`
+- `fix_step(step_data, error_output, sys_constraints, decompiler, max_retries)`
+- `main(goal)`
+
+### `genetic_flow/memory_daemon/gemini_client.py`
+
+- `send_to_daemon(command, exit_code)`
+
+### `genetic_flow/memory_daemon/gemini_daemon.py`
+
+- `process_and_store(payload)` — The heavy lifting she does silently after your terminal is already free.
+- `handle_connection(reader, writer)` — Instantly accepts data from your shell hook and releases it.
+- `main()`
+
+### `genetic_flow/memory_pipeline/audio_engine.py`
+
+- **class `AudioManifestationEngine`** — [PHASE 5.2/5.3] Headless TTS & Async Streaming Engine.
+  - methods: `speak`, `run_audio_feedback`
+
+### `genetic_flow/memory_pipeline/headless_orchestrator.py`
+
+- **class `HeadlessOrchestrator`**
+  - methods: `handle_input`
+
+### `genetic_flow/memory_pipeline/rag_interceptor.py`
+
+- **class `SimpleEmbedder`** — Computes fixed-dimension semantic vector via hashing.
+  - methods: `embed`
+- **class `RAGInterceptor`**
+  - methods: `pre_flight_query`, `log_event`
+
+### `genetic_flow/pyramid/code_sprite.py`
+
+- **class `CodeSprite`** — Autonomous Dependency Sprite: Scans for imports and manifests environment.
+  - methods: `_get_installed_packages`, `scan_and_fix`
+
+### `genetic_flow/runtime_loop.py`
+
+- `main_loop(max_gen)`
+
+### `genetic_flow/symbolic_brain/engine.py`
+
+- **class `SymbolicContextEngine`** — [PERFORMATIVE: TOKENIZE] Compiles dynamic AST tree; extracts parent/child shapes.
+  - methods: `get_structural_signature`, `_walk_signature`, `generate_context_hash`, `update_relational_matrix`
+- **class `ProductionRuleMatcher`** — [PERFORMATIVE: MATCH] Inductive Logic Loop matching pattern variations.
+  - methods: `match_rule`
+- **class `MutationInjector`** — [PERFORMATIVE: INJECT] Executes physical AST block mutations.
+  - methods: `apply_mutation`
+- **class `WeightBackpropagator`** — [PERFORMATIVE: UPDATE] Symbolic Backprop Step.
+  - methods: `backprop`
+
+### `genetic_flow/symbolic_brain/extractor.py`
+
+- **class `SymbolicExtractor`** — Extracts symbolic rules from successful mutations in the ledger.
+  - methods: `analyze_patterns`
+
+### `genetic_flow/symbolic_brain/parser.py`
+
+- **class `SymbolicParser`** — [PERFORMATIVE: TOKENIZE] Compiles live files into structured AST nodes.
+  - methods: `get_signature_hash`, `_get_structural_string`, `map_token_relations`
+
+### `genetic_flow/symbolic_brain/symbolic_inference.py`
+
+- **class `SymbolicInference`** — [PERFORMATIVE: INFER] Selects target execution transformation rules.
+  - methods: `infer_optimization_directive`
+
+### `genetic_flow/symbolic_brain/weight_backprop.py`
+
+- **class `WeightBackprop`** — [PERFORMATIVE: UPDATE] Calculates code fitness improvements and updates rule weights.
+  - methods: `update_rule_weights`
+
+### `genetic_flow/tracking_db/writer.py`
+
+- `get_git_hash()`
+- `store_mutation(chash, gen, score, code, task, ast_depth, stagnation, latency_delta)`
+
+### `genetic_optimizer.py`
+
+- `fitness(response_text, duration)`
+
+### `initialize_enterprise_project.py`
+
+- `get_token()`
+- `generate_ascii_tree(path)` — Simple ASCII tree generator.
+- `initialize()`
+
+### `scientific_executor.py`
+
+- `log_scientific_step(step_num, step_desc, observation, hypothesis, experiment, result)`
+- `get_next_step()`
+- `mark_step_complete(step_num)`
+- `run_with_limits(command)`
+- `execute_step(step_num, step_desc)`
+
+### `scientific_orchestrator.py`
+
+- **class `ScientificOrchestrator`**
+  - methods: `log_scientific_step`, `get_next_step`, `mark_step_complete`, `run_with_limits`, `orchestrate`
+
+### `src/main.py`
+
+- `main()`
+
+## Public API index
+
+| Module | Function | Signature |
+|--------|----------|-----------|
+| `gemini_agent` | `fetch_memory_context` | `fetch_memory_context(goal)` |
+| `gemini_agent` | `fix_step` | `fix_step(step_data, error_output, sys_constraints, decompiler, max_retries)` |
+| `gemini_agent` | `get_embedding` | `get_embedding(text)` |
+| `gemini_agent` | `main` | `main(goal)` |
+| `gemini_agent` | `run_cmd` | `run_cmd(cmd)` |
+| `gemini_client` | `send_to_daemon` | `send_to_daemon(command, exit_code)` |
+| `gemini_daemon` | `handle_connection` | `handle_connection(reader, writer)` |
+| `gemini_daemon` | `main` | `main()` |
+| `gemini_daemon` | `process_and_store` | `process_and_store(payload)` |
+| `genetic_optimizer` | `fitness` | `fitness(response_text, duration)` |
+| `initialize_enterprise_project` | `generate_ascii_tree` | `generate_ascii_tree(path)` |
+| `initialize_enterprise_project` | `get_token` | `get_token()` |
+| `initialize_enterprise_project` | `initialize` | `initialize()` |
+| `main` | `main` | `main()` |
+| `router` | `extract_clean_code` | `extract_clean_code(raw_stream)` |
+| `runtime_loop` | `main_loop` | `main_loop(max_gen)` |
+| `scientific_executor` | `execute_step` | `execute_step(step_num, step_desc)` |
+| `scientific_executor` | `get_next_step` | `get_next_step()` |
+| `scientific_executor` | `log_scientific_step` | `log_scientific_step(step_num, step_desc, observation, hypothesis, experiment, result)` |
+| `scientific_executor` | `mark_step_complete` | `mark_step_complete(step_num)` |
+| `scientific_executor` | `run_with_limits` | `run_with_limits(command)` |
+| `sync_hook` | `export_optimization_stats` | `export_optimization_stats()` |
+| `sync_hook` | `sync_bayesian_weights` | `sync_bayesian_weights()` |
+| `target_feature` | `algorithm` | `algorithm(n)` |
+| `test_harness` | `evaluate` | `evaluate()` |
+| `topology_mapper` | `get_cluster_topology` | `get_cluster_topology()` |
+| `topology_mapper` | `initialize_cluster_table` | `initialize_cluster_table()` |
+| `topology_mapper` | `update_heartbeat` | `update_heartbeat(node_id)` |
+| `tui_layout` | `generate_dashboard` | `generate_dashboard(gen, fitness, code_str, stuck_count, max_stuck, sprite_status)` |
+| `tui_layout` | `get_last_insight` | `get_last_insight()` |
+| `writer` | `get_git_hash` | `get_git_hash()` |
+| `writer` | `store_mutation` | `store_mutation(chash, gen, score, code, task, ast_depth, stagnation, latency_delta)` |
+
+## Status
+
+- Branch: `main`
+- Last commit: 2026-06-20 13:23:18 -0600
+- File types: .md ×19, .sh ×4, .json ×2, .p ×1, .rs ×1, .mod ×1, .go ×1, .txt ×1
+
+### Recent commits
 ```
-H2O_MATRIX/
-├── .git/
-├── README.md
-├── src/
-│   ├── main.py
-│   ├── matrix_operations.py
-│   ├── input_validation.py
-│   └── result_processing.py
-├── tests/
-│   ├── test_matrix_operations.py
-│   ├── test_input_validation.py
-│   └── test_result_processing.py
-├── requirements.txt
-└── LICENSE
+a688d66 [Moe autonomous] H2O_MATRIX 2026-06-20 13:23
+82ac6f3 [Moe autonomous] H2O_MATRIX 2026-06-20 02:52
+102d078 Initial commit
+f41f663 Enterprise: H2O Matrix Unified Manifestation
+89b3f68 Enterprise: Automated Project Sync
+47b628f Enterprise: Project SOP Manifestation
+7d06d2d Enterprise: Automated Project Sync
+8c4744d feat: Manifest Gen 8 Matrix IDE Substrate
 ```
 
-## Functional Axioms
-1. **UI:** The project features a simple, intuitive command-line interface for user input.
-2. **DB:** The project utilizes a lightweight, in-memory database for storing matrix operations.
-3. **State:** The project maintains a consistent state throughout its execution, ensuring accurate results.
-4. **API:** The project exposes a well-documented API for matrix operations, allowing for easy integration with other projects.
-
-## Multi-Platform Setup
-### Windows Setup
-1. Install Python 3.10+ from [python.org](https://www.python.org/)
-2. Open PowerShell
-3. Run: `pip install -r requirements.txt`
-4. Execute: `python src/main.py`
-
-### Android Setup (Termux)
-1. Install Termux from the Google Play Store
-2. Run: `pkg install python git`
-3. Run: `pip install -r requirements.txt`
-4. Execute: `python src/main.py`
-
-## Roadmap
-* Implement support for advanced matrix operations (e.g., eigenvalue decomposition)
-* Integrate with popular deep learning frameworks (e.g., TensorFlow, PyTorch)
-* Develop a graphical user interface for the project
-
-## Changelog
-* v1.0.0: Initial release of the H2O_MATRIX project
+---
+*README generated by `readme_generator.py` (Viper). Deterministic — derived from source, not LLM prose.*
