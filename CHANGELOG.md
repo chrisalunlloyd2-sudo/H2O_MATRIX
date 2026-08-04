@@ -39,6 +39,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 - **[Changed]** Enterprise: Automated Project Sync ($hash)
 - **[Added]** feat: Manifest Gen 8 Matrix IDE Substrate ($hash)
 - **[Changed]** Gen 20: Mutation b53e998b0d82147fc70805fcffbbe393  ($hash)
-- **[Changed]** Gen 6: Cloud Escalation ($hash)
 
