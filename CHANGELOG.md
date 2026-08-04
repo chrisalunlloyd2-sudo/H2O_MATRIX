@@ -42,6 +42,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 - **[Changed]** Enterprise: H2O Matrix Unified Manifestation ($hash)
 - **[Changed]** Enterprise: Automated Project Sync ($hash)
 - **[Changed]** Enterprise: Project SOP Manifestation ($hash)
-- **[Changed]** Enterprise: Automated Project Sync ($hash)
 
