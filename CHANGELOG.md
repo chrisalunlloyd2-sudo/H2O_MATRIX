@@ -22,6 +22,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 - **[Changed]** Infrastructure: Restore Router Phase 2 ($hash)
 - **[Changed]** Infrastructure: Restore Extractor and Fix Rollback Safety ($hash)
 - **[Changed]** Infrastructure: Finalized Phase 2 Safe Loop ($hash)
-- **[Changed]** Initial Genetic Flow Setup ($hash)
 
