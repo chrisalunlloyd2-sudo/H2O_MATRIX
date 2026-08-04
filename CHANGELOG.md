@@ -52,7 +52,5 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
-
-## 2026-06
-- **[Changed]** [Moe autonomous] H2O_MATRIX 2026-06-29 09:06 ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
