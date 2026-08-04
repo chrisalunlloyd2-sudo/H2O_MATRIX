@@ -37,6 +37,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 - **[Changed]** Gen 20: Mutation b53e998b0d82147fc70805fcffbbe393  ($hash)
 - **[Changed]** Gen 6: Cloud Escalation ($hash)
 - **[Changed]** Gen 1: Mutation a7f9c36da619e42cbf12e22ed022ba58  ($hash)
-- **[Changed]** Gen 6: Cloud Escalation ($hash)
 
