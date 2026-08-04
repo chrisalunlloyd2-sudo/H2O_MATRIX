@@ -45,6 +45,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 
 ## 2026-05
 - **[Changed]** Initial commit ($hash)
-- **[Changed]** Enterprise: H2O Matrix Unified Manifestation ($hash)
 
