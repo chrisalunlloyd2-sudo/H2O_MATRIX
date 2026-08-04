@@ -25,6 +25,7 @@ All notable changes to this project.
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
 - **[Docs]** docs: auto-update [skip-docs] ($hash)
+- **[Docs]** docs: auto-update [skip-docs] ($hash)
 
 ## 2026-07
 - **[Changed]** TODO: LIST ($hash)
@@ -58,5 +59,4 @@ All notable changes to this project.
 - **[Changed]** Gen 5: Cloud Escalation ($hash)
 - **[Changed]** Baseline: Fix algorithm signature for Phase 2 ($hash)
 - **[Changed]** Cleanup: Untrack DB and fix Gitignore ($hash)
-- **[Changed]** Infrastructure: Restore Router Phase 2 ($hash)
 
