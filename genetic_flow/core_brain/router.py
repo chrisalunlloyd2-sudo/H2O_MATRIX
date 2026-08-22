@@ -14,6 +14,10 @@ class LocalAgentRouter:
     """[PERFORMATIVE: ROUTE] Native 32-bit llama-cli Wrapper with KQML/Vector Handoff."""
 
     def __init__(self, model_filename="danube3.gguf"):
+        """Init.
+
+        Args: model_filename.
+        """
         base_path = os.path.dirname(__file__)
         self.model_path = os.path.abspath(os.path.join(base_path, "..", "models", "h2o-danube3-500m-chat-Q4_K_M.gguf"))
         self.cli_path = os.path.abspath(os.path.join(base_path, "..", "models", "llama-cli-32bit"))
@@ -26,6 +30,10 @@ class LocalAgentRouter:
             self.mock_mode = False
 
     def get_management_rules(self, level):
+        """Get management rules.
+
+        Args: level.
+        """
         conn = sqlite3.connect(os.path.expanduser("~/.matrix_ide/database/memory_foundation.db"))
         cur = conn.cursor()
         cur.execute("SELECT prompt_blueprint, management_logic FROM handoff_instructions WHERE level_target = ?", (level,))
@@ -35,6 +43,10 @@ class LocalAgentRouter:
 
     def run_generation(self, task_intent, existing_code, temperature=0.7, extra_directive=""):
         # 1. Retrieve Precached Prompt Engineering & Local Management Rules
+        """Run generation.
+
+        Args: task_intent, existing_code, temperature, extra_directive.
+        """
         blueprint, logic = self.get_management_rules("Neural")
         timeout_val = 1.0
         if logic and "timeout:" in logic:
@@ -95,5 +107,9 @@ class LocalAgentRouter:
         return raw_stream.strip()
 
 def extract_clean_code(raw_stream):
+    """Extract clean code.
+
+    Args: raw_stream.
+    """
     router = LocalAgentRouter()
     return router.clean_code(raw_stream)
