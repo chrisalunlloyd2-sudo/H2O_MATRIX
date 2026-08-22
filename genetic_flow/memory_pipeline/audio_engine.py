@@ -7,6 +7,7 @@ class AudioManifestationEngine:
 
     def __init__(self):
         # Check if espeak is available
+        """Init (function)."""
         self.tts_path = "/data/data/com.termux/files/usr/bin/espeak"
         self.tts_available = os.path.exists(self.tts_path)
 
