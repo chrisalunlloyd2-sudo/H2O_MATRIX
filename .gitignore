@@ -36,3 +36,12 @@ genetic_flow/models/
 # Personal configs
 .bash_history
 .bashrc
+# --- catalogued binaries (see CATALOGUE.md) ---
+# Listed individually, not as *.so / *.jar: the rule is a
+# threshold on the FILE, so small ones of the same type ship.
+/agy-cli-go/agy-go
+
+__pycache__/
+.gradle/
+.idea/
+
